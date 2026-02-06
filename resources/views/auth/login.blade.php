@@ -49,12 +49,12 @@
     </form>
 
     <!-- Register link (optional but useful for admin context) -->
-    @if (Route::has('register'))
+    {{-- @if (Route::has('register'))
         <p class="mt-6 text-center text-sm text-text opacity-80">
             Don't have an account yet?
             <a href="{{ route('register') }}" class="text-primary hover:text-secondary font-medium hover:underline">
                 {{ __('Create one') }}
             </a>
         </p>
-    @endif
+    @endif --}}
 </x-guest-layout>

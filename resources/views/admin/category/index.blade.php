@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <h4>Categories</h4>
-            <a href="" class="btn btn-primary">
+            <a href="{{ route('admin.category.create') }}" class="btn btn-primary">
                 add new
             </a>
         </div>
@@ -16,20 +16,36 @@
                             </th>
                             <th>Title</th>
                             <th>Slug</th>
-                            <th>Static</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                1
-                            </td>
-                            <td>Demo title</td>
-                            <td>Demo title</td>
-                            <td>Demo title</td>
-                            <td><a href="#" class="btn btn-primary">Detail</a></td>
-                        </tr>
+                        @foreach ($categories as $category)
+                            <tr>
+                                <td>
+                                    {{ $category->position }}
+                                </td>
+                                <td>{{ $category->title }}</td>
+                                <td>{{ $category->slug }}</td>
+                                <td>
+                                    @if ($category->status == true)
+                                        <span class="badge bg-success text-white">visible</span>
+                                    @else
+                                        <span class="badge bg-danger text-white">hidden</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <form action="{{route('admin.category.destroy', $category->id)}}" method="post">
+                                        @csrf
+                                        @method("delete")
+                                        <a href="{{ route('admin.category.edit', $category->id) }}"
+                                            class="btn btn-primary btn-sm">edit</a>
+                                        <button type="submit" class="btn btn-danger btn-sm">delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
