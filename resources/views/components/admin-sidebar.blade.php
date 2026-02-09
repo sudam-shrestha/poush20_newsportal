@@ -15,8 +15,8 @@
                      data-feather="tag"></i><span>Category</span></a>
          </li>
 
-         <li class="dropdown">
-             <a href="{{ route('dashboard') }}" class="nav-link"><i
+         <li class="dropdown {{Request::routeIs('admin.article*') ? 'active' : ''}}">
+             <a href="{{ route('admin.article.index') }}" class="nav-link"><i
                      data-feather="file-text"></i><span>Article</span></a>
          </li>
 
