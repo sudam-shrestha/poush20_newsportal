@@ -1,3 +1,3 @@
-<x-frontend-layout>
-    home page
+<x-frontend-layout title="Home">
+    Home Page
 </x-frontend-layout>

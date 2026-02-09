@@ -1,8 +1,15 @@
 <header class="bg-(--bg-color)">
-    <div class="container py-6 mx-auto flex justify-between items-center">
+    <div class="container py-6 mx-auto flex flex-col md:flex-row justify-between items-center">
         <div>
             <img class="h-14 md:h-20" src="{{ asset('frontend/images/logo.png') }}" alt="Jawaaf Logo">
         </div>
+        @if ($header_advertise)
+            <div>
+                <a href="{{ $header_advertise->redirect_url }}" target="_blank">
+                    <img class="h-14 md:h-20" src="{{ asset($header_advertise->image) }}" alt="">
+                </a>
+            </div>
+        @endif
         <div>
             <span class="text-base md:text-xl">
                 {{ toNepaliDate(now()) }}
@@ -14,12 +21,10 @@
     <nav class="bg-(--primary-color) text-white py-2">
         <div class="container flex justify-between items-center">
             <div class="hidden lg:flex gap-6 text-xl">
-                <a href="">गृहपृष्ठ</a>
-                <a href="">समाचार</a>
-                <a href="">मनोरञ्जन</a>
-                <a href="">मनोरञ्जन</a>
-                <a href="">मनोरञ्जन</a>
-                <a href="">मनोरञ्जन</a>
+                <a href="{{ route('home') }}">गृहपृष्ठ</a>
+                @foreach ($categories as $category)
+                    <a href="{{ route('category', $category->slug) }}">{{ $category->title }}</a>
+                @endforeach
             </div>
             <div class="lg:hidden">
                 Menu
@@ -77,11 +82,9 @@
         </button>
     </div>
     <div class="text-xl flex flex-col gap-6 text-(--primary-color)">
-        <a href="">गृहपृष्ठ</a>
-        <a href="">समाचार</a>
-        <a href="">मनोरञ्जन</a>
-        <a href="">मनोरञ्जन</a>
-        <a href="">मनोरञ्जन</a>
-        <a href="">मनोरञ्जन</a>
+        <a href="{{ route('home') }}">गृहपृष्ठ</a>
+        @foreach ($categories as $category)
+            <a href="">{{ $category->title }}</a>
+        @endforeach
     </div>
 </div>
