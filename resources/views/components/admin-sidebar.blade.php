@@ -20,8 +20,8 @@
                      data-feather="file-text"></i><span>Article</span></a>
          </li>
 
-         <li class="dropdown">
-             <a href="{{ route('dashboard') }}" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
+         <li class="dropdown {{Request::routeIs('admin.advertise*') ? 'active' : ''}}">
+             <a href="{{ route('admin.advertise.index') }}" class="nav-link"><i data-feather="image"></i><span>Advertise</span></a>
          </li>
 
 

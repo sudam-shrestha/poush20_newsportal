@@ -53,9 +53,9 @@ class ArticleController extends Controller
         //     $file->move("images", $file_name);
         //     $article->image = "images/$file_name";
         // }
-
-        $article->image = upload_image($request->image);
-
+        if ($request->image) {
+            $article->image = upload_image($request->image);
+        }
         $article->save();
         $article->categories()->attach($request->categories);
         toast("Article created successfully", "success");
@@ -107,7 +107,9 @@ class ArticleController extends Controller
         //     $article->image = "images/$file_name";
         // }
 
-        $article->image = upload_image($request->image);
+        if ($request->image) {
+            $article->image = upload_image($request->image);
+        }
 
         $article->save();
         $article->categories()->sync($request->categories);
