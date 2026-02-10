@@ -1,13 +1,13 @@
-<x-frontend-layout :title="$category->title" :description="$category->meta_description" :keywords="$category->meta_keywords">
+<x-frontend-layout>
 
     <section class="py-10">
         <div class="container grid grid-cols-3 gap-8">
             <div class="col-span-2 space-y-4">
                 <h1
                     class="text-2xl text-(--primary-color) p-3 bg-(--primary-color)/20 border-l-4 border-(--primary-color)">
-                    {{ $category->title }}</h1>
+                    Search Result for {{ $request->q }}</h1>
 
-                @foreach ($category->articles as $article)
+                @foreach ($articles as $article)
                     <div>
                         <a href="{{ route('article', $article->id) }}"
                             class="grid grid-cols-3 items-center gap-2 bg-white p-2 rounded-md">
